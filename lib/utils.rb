@@ -22,3 +22,17 @@ def todays_sessions(sessions)
     Date.new(year, month, day) == Date.today
   end
 end
+
+# Returns the next session
+def next_session(sessions)
+  sessions.select do |session|
+    day, month, year = session[:date].split('/')
+                                     .map(&:to_i)
+    hours, minutes = session[:time].split(':')
+
+    session_time = Time.local(year, month, day, hours, minutes)
+    current_time = Time.now
+
+    session_time > current_time
+  end.first
+end

@@ -8,10 +8,11 @@ Read my schedule and text me with relevant info.
 docker build -t pamplemousse/alfred .
 
 # run the tests
-docker run pamplemousse/alfred bundle exec rspec
+docker run pamplemousse/alfred rspec
 
 # run the script
 docker run --rm -it \
+  -p 8000:9292 \
   pamplemousse/alfred \
-  ruby main.rb
+  rackup config.ru --host=0.0.0.0
 ```

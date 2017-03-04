@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'nokogiri'
 gem 'rake'
+gem 'sinatra'
+gem 'sinatra-contrib'
 
 group :development do
   gem 'rubocop'

@@ -14,7 +14,8 @@ class Alfred < Sinatra::Base
   end
 
   get '/' do
-    "Good morning' Sir."
+    "Good morning' Sir.
+     #{Time.now}"
   end
 
   get '/sessions' do

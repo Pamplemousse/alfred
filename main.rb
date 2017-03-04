@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'twilio-ruby'
 
 require_relative 'lib/sessions'
 
@@ -21,6 +22,19 @@ class Alfred < Sinatra::Base
   get '/sessions' do
     @sessions = all_sessions
     "#{@sessions}"
+  end
+
+  post '/mailbox' do
+    content_type 'text/xml'
+
+    sender = params[:From]
+
+    if sender == ENV['PHONE_NUMBER']
+      response = Twilio::TwiML::Response.new do |r|
+        r.Message(params.to_s)
+      end
+      response.to_xml
+    end
   end
 
   private

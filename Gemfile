@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.4.0'
 
+gem 'dotenv'
 gem 'nokogiri'
 gem 'rake'
 gem 'sinatra'
 gem 'sinatra-contrib'
+gem 'twilio-ruby'
 
 group :development do
   gem 'rubocop'

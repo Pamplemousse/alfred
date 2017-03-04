@@ -7,12 +7,11 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     diff-lcs (1.3)
-    httparty (0.14.0)
-      multi_xml (>= 0.5.2)
+    dotenv (2.2.0)
+    jwt (1.5.6)
     method_source (0.8.2)
     mini_portile2 (2.1.0)
     multi_json (1.12.1)
-    multi_xml (0.6.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     parser (2.4.0.0)
@@ -66,12 +65,17 @@ GEM
     slop (3.6.0)
     tilt (2.0.6)
     timecop (0.8.1)
+    twilio-ruby (4.13.0)
+      builder (>= 2.1.2)
+      jwt (~> 1.0)
+      multi_json (>= 1.3.0)
     unicode-display_width (1.1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   nokogiri
   pry-byebug
   rake
@@ -80,6 +84,7 @@ DEPENDENCIES
   sinatra
   sinatra-contrib
   timecop
+  twilio-ruby
 
 RUBY VERSION
    ruby 2.4.0p0

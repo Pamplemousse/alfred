@@ -3,7 +3,7 @@ require 'open-uri'
 require 'sinatra/base'
 require 'sinatra/reloader'
 
-require_relative 'lib/utils'
+require_relative 'lib/sessions'
 
 require 'pry-byebug' unless Sinatra::Base.production?
 
@@ -45,7 +45,7 @@ class Alfred < Sinatra::Base
       end
     end.flatten
 
-    my_sessions = followed_sessions(all_sessions)
-    todays_sessions(my_sessions)
+    my_sessions = Sessions.followed(sessions)
+    Sessions.todays(my_sessions)
   end
 end

@@ -1,6 +1,49 @@
 require 'spec_helper'
 require_relative '../lib/sessions.rb'
 
+describe '#current' do
+  before do
+    new_time = Time.local(2017, 3, 20, 15, 40, 0)
+    Timecop.freeze(new_time)
+  end
+
+  let(:mock_sessions) do
+    [{ module: '4TPM201U Algebre lineaire',
+       date: '20/03/2017',
+       time: '11:00',
+       room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
+     { module: '4TPM206U Initiation a la programmation en C',
+       date: '20/03/2017',
+       time: '15:30',
+       room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
+     { module: '4TMQ401U Structures algebriques 1',
+       date: '20/03/2017',
+       time: '17:00',
+       room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' }]
+  end
+
+  let(:current_session) { Sessions.current(mock_sessions) }
+
+  it 'returns the current session' do
+    expect(current_session[:module])
+      .to eq '4TPM206U Initiation a la programmation en C'
+  end
+  it 'does not return previous sessions' do
+    expect(current_session[:module])
+      .not_to eq '4TMQ401U Structures algebriques 1'
+  end
+  it 'does not return the session after the next one' do
+    expect(current_session[:module]).not_to eq '4TPM201U Algebre lineaire'
+  end
+
+  describe 'when there is no current one' do
+    it 'does not return anything' do
+      current_session = Sessions.current([])
+      expect(current_session).to be_nil
+    end
+  end
+end
+
 describe '#followed' do
   let(:mock_sessions) do
     [{ module: '4TPM201U Algebre lineaire',

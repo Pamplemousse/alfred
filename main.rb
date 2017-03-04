@@ -19,20 +19,20 @@ class Alfred < Sinatra::Base
   end
 
   get '/sessions' do
-    @sessions = get_sessions
+    @sessions = all_sessions
     "#{@sessions}"
   end
 
   private
 
-  def get_sessions
+  def all_sessions
     schedules = [
       'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g254486.xml',
       'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g299653.xml',
       'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g291701.xml'
     ].freeze
 
-    all_sessions = schedules.map do |schedule|
+    sessions = schedules.map do |schedule|
       page = Nokogiri::XML(
         open(schedule)
       )

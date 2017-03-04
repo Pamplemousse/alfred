@@ -1,4 +1,4 @@
-require 'pry'
+require 'pry-byebug'
 require 'timecop'
 
 RSpec.configure do |config|

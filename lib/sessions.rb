@@ -2,8 +2,9 @@ class Sessions
   # Returns the current session
   def self.current(sessions)
     sessions.select do |session|
-      day, month, year = session[:date].split('/')
-        .map(&:to_i)
+      day = session[:date].day
+      month = session[:date].month
+      year = session[:date].year
       hours, minutes = session[:time].split(':')
 
       session_time = Time.local(year, month, day, hours, minutes)
@@ -36,8 +37,9 @@ class Sessions
   # Returns the next session
   def self.next(sessions)
     sessions.select do |session|
-      day, month, year = session[:date].split('/')
-        .map(&:to_i)
+      day = session[:date].day
+      month = session[:date].month
+      year = session[:date].year
       hours, minutes = session[:time].split(':')
 
       session_time = Time.local(year, month, day, hours, minutes)
@@ -50,8 +52,10 @@ class Sessions
   # Returns the sessions happening the current day
   def self.todays(sessions)
     sessions.select do |session|
-      day, month, year = session[:date].split('/')
-        .map(&:to_i)
+      day = session[:date].day
+      month = session[:date].month
+      year = session[:date].year
+
       Date.new(year, month, day) == Date.today
     end
   end

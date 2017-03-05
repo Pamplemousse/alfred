@@ -7,17 +7,19 @@ describe '#current' do
     Timecop.freeze(new_time)
   end
 
+  let(:date) { Date.new(2017, 3, 20) }
+
   let(:mock_sessions) do
     [{ module: '4TPM201U Algebre lineaire',
-       date: '20/03/2017',
+       date: date,
        time: '11:00',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TPM206U Initiation a la programmation en C',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TMQ401U Structures algebriques 1',
-       date: '20/03/2017',
+       date: date,
        time: '17:00',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' }]
   end
@@ -45,29 +47,31 @@ describe '#current' do
 end
 
 describe '#followed' do
+  let(:date) { Date.new(2017, 3, 20) }
+
   let(:mock_sessions) do
     [{ module: '4TPM201U Algebre lineaire',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TPM206U Initiation a la programmation en C',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TMQ401U Structures algebriques 1',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TTI603U Arithmetique et crypto',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TTI601U Codes correcteurs',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TPM209U Analyse',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' }]
   end
@@ -108,13 +112,16 @@ describe '#todays' do
     Timecop.freeze(date)
   end
 
+  let(:today) { Date.new(2017, 3, 20) }
+  let(:tomorrow) { Date.new(2017, 3, 21) }
+
   let(:mock_sessions) do
     [{ module: '4TPM201U Algebre lineaire',
-       date: '20/03/2017',
+       date: today,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TPM209U Analyse',
-       date: '21/03/2017',
+       date: tomorrow,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' }]
   end
@@ -145,17 +152,19 @@ describe '#next' do
     Timecop.freeze(new_time)
   end
 
+  let(:date) { Date.new(2017, 3, 20) }
+
   let(:mock_sessions) do
     [{ module: '4TPM201U Algebre lineaire',
-       date: '20/03/2017',
+       date: date,
        time: '11:00',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TPM206U Initiation a la programmation en C',
-       date: '20/03/2017',
+       date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
      { module: '4TMQ401U Structures algebriques 1',
-       date: '20/03/2017',
+       date: date,
        time: '17:00',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' }]
   end

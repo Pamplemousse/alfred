@@ -36,7 +36,7 @@ end
 describe '.message' do
   let(:session) do
     { module: '4TPM201U Algebre lineaire',
-      date: '20/03/2017',
+      date: Date.new,
       time: '11:00',
       room: 'A21/Salle 302' }
   end

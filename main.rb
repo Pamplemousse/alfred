@@ -61,8 +61,11 @@ class Alfred < Sinatra::Base
       )
 
       page.xpath('//event').map do |event|
+        week_date = Date.strptime(event[:date], '%d/%m/%Y')
+        day_in_week = event.xpath('.//day').text.to_i
+
         { module: event.xpath('.//module/item').text,
-          date: event[:date],
+          date: week_date + day_in_week,
           time: event.xpath('.//starttime').text,
           room: event.xpath('.//room/item').text }
       end

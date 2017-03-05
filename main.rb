@@ -4,9 +4,10 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 require 'twilio-ruby'
 
-require_relative 'lib/sessions'
-
 require 'pry-byebug' unless Sinatra::Base.production?
+
+require_relative 'lib/sessions'
+require_relative 'lib/messenger'
 
 class Alfred < Sinatra::Base
   configure :development do
@@ -28,12 +29,20 @@ class Alfred < Sinatra::Base
     content_type 'text/xml'
 
     sender = params[:From]
+    content = params[:Body]
 
     if sender == ENV['PHONE_NUMBER']
-      response = Twilio::TwiML::Response.new do |r|
-        r.Message(params.to_s)
+      sessions = Sessions.todays(
+        Sessions.followed(all_sessions)
+      )
+      message = Messenger.new(content, sessions).message
+
+      unless message.empty?
+        response = Twilio::TwiML::Response.new do |r|
+          r.Message(message)
+        end
+        response.to_xml
       end
-      response.to_xml
     end
   end
 
@@ -46,7 +55,7 @@ class Alfred < Sinatra::Base
       'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g291701.xml'
     ].freeze
 
-    sessions = schedules.map do |schedule|
+    schedules.map do |schedule|
       page = Nokogiri::XML(
         open(schedule)
       )
@@ -58,8 +67,5 @@ class Alfred < Sinatra::Base
           room: event.xpath('.//room/item').text }
       end
     end.flatten
-
-    my_sessions = Sessions.followed(sessions)
-    Sessions.todays(my_sessions)
   end
 end

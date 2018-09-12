@@ -84,24 +84,16 @@ describe '#followed' do
     end
   end
 
-  it 'keeps "Algebre lineaire"' do
+  it 'keeps modules of interest' do
     expect(filtered_sessions_names).to include '4TPM201U Algebre lineaire'
-  end
-  it 'keeps "Initiation a la programmation en C"' do
     expect(filtered_sessions_names)
       .to include '4TPM206U Initiation a la programmation en C'
-  end
-  it 'keeps "Structures algebriques 1"' do
     expect(filtered_sessions_names)
       .to include '4TMQ401U Structures algebriques 1'
-  end
-  it 'keeps "Arithmetique et crypto"' do
     expect(filtered_sessions_names).to include '4TTI603U Arithmetique et crypto'
-  end
-  it 'keeps "Codes correcteurs"' do
     expect(filtered_sessions_names).to include '4TTI601U Codes correcteurs'
   end
-  it 'does not keep "Analyse"' do
+  it 'does not keep modules I am not interested in' do
     expect(filtered_sessions_names).not_to include '4TPM209U Analyse'
   end
 end

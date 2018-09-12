@@ -21,11 +21,12 @@ class Sessions
   # Returns the sessions that I am interested in
   def self.followed(all_sessions)
     modules = [
-      '4TPM201U', # algebre lineaire
-      '4TPM206U', # initiation a la programmation en C
-      '4TMQ401U', # structures algebriques 1
-      '4TTI603U', # arithmetique et crypto
-      '4TTI601U', # codes correcteurs
+      '4TIN911U', # securite des reseaux
+      '4TCY903U', # cryptologie avancee
+      '4TCY902U', # cryptanalyse
+      '4TIN907U', # verification de logiciels
+      '4TMA901U', # algorithmique arithmetique
+      '4TCY701U', # theorie de la complexite
     ].freeze
 
     all_sessions.select do |session|

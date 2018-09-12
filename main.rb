@@ -50,9 +50,8 @@ class Alfred < Sinatra::Base
 
   def all_sessions
     schedules = [
-      'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g254486.xml',
-      'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g299653.xml',
-      'https://edt-st.u-bordeaux.fr/etudiants/Licence/Semestre2/g291701.xml'
+      'https://edt-st.u-bordeaux.fr/etudiants/Master/Master2/Semestre1/g267729.xml',
+      'https://edt-st.u-bordeaux.fr/etudiants/Master/Master1/Semestre1/g267819.xml',
     ].freeze
 
     schedules.map do |schedule|

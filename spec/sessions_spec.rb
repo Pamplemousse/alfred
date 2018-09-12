@@ -50,23 +50,27 @@ describe '#followed' do
   let(:date) { Date.new(2017, 3, 20) }
 
   let(:mock_sessions) do
-    [{ module: '4TPM201U Algebre lineaire',
+    [{ module: '4TCY903U Cryptologie avancée',
        date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
-     { module: '4TPM206U Initiation a la programmation en C',
+     { module: '4TIN907U Vérification de Logiciels',
        date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
-     { module: '4TMQ401U Structures algebriques 1',
+     { module: '4TIN911U Sécurité des Réseaux',
        date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
-     { module: '4TTI603U Arithmetique et crypto',
+     { module: '4TCY902U Cryptanalyse',
        date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
-     { module: '4TTI601U Codes correcteurs',
+     { module: '4TMA901U Algorithmique Arithmétique',
+       date: date,
+       time: '15:30',
+       room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
+     { module: '4TCY701U Théorie de la complexité',
        date: date,
        time: '15:30',
        room: 'A22/Amphith\u00E9\u00E2tre Henri POINCARE' },
@@ -85,15 +89,15 @@ describe '#followed' do
   end
 
   it 'keeps modules of interest' do
-    expect(filtered_sessions_names).to include '4TPM201U Algebre lineaire'
-    expect(filtered_sessions_names)
-      .to include '4TPM206U Initiation a la programmation en C'
-    expect(filtered_sessions_names)
-      .to include '4TMQ401U Structures algebriques 1'
-    expect(filtered_sessions_names).to include '4TTI603U Arithmetique et crypto'
-    expect(filtered_sessions_names).to include '4TTI601U Codes correcteurs'
+    expect(filtered_sessions_names).to include '4TCY903U Cryptologie avancée'
+    expect(filtered_sessions_names).to include '4TIN907U Vérification de Logiciels'
+    expect(filtered_sessions_names).to include '4TIN911U Sécurité des Réseaux'
+    expect(filtered_sessions_names).to include '4TCY902U Cryptanalyse'
+    expect(filtered_sessions_names).to include '4TMA901U Algorithmique Arithmétique'
+    expect(filtered_sessions_names).to include '4TCY701U Théorie de la complexité'
   end
-  it 'does not keep modules I am not interested in' do
+
+  it 'does not keep modules that I am not interested in' do
     expect(filtered_sessions_names).not_to include '4TPM209U Analyse'
   end
 end

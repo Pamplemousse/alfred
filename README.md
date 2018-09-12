@@ -10,7 +10,11 @@ Triggered by sms.
 docker build -t pamplemousse/alfred .
 
 # run the tests
-docker run pamplemousse/alfred rspec
+docker run \
+  -u $(id -u):$(id -g)
+  -v $(pwd):/app
+  -w /app
+  pamplemousse/alfred rspec
 
 # run the app
 docker run --rm -it \

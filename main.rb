@@ -38,8 +38,8 @@ class Alfred < Sinatra::Base
       message = Messenger.new(content, sessions).message
 
       unless message.empty?
-        response = Twilio::TwiML::Response.new do |r|
-          r.Message(message)
+        response = Twilio::TwiML::MessagingResponse.new do |r|
+          r.message(body: message)
         end
         response.to_xml
       end

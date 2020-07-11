@@ -1,4 +1,4 @@
-FROM ruby:2.4-onbuild
+FROM ruby:2.7-onbuild
 
 USER 1000:1000
 
